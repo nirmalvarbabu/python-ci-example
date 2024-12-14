@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Installing Python and dependencies..."
+      - pip install -r requirements.txt || true  # Ensure dependencies are installed
+  build:
+    commands:
+      - echo "Running the Python application..."
+      - python app.py
+  post_build:
+    commands:
+      - echo "Running tests..."
+      - python -m unittest test_app.py
+
+artifacts:
+  files:
+    - "**/*"
